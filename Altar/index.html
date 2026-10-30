@@ -1,0 +1,982 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>El Altar | Día de Muertos</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f17e55;
+            font-family: Georgia, serif;
+            color: #382b24;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            text-align: center;
+            padding: 35px 15px 25px;
+            color: white;
+        }
+
+        .logo {
+            width: 115px;
+            height: 115px;
+            margin: auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #16c5bb, #5936d9);
+            border: 4px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        header h2 {
+            margin: 20px auto 0;
+            background: #292b27;
+            padding: 13px;
+            border-radius: 30px;
+            max-width: 350px;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        /* MENU */
+
+        nav {
+            background-color: #fff5e9;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 3px 10px #0002;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #b94f32;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 6px 10px;
+        }
+
+        nav a:hover {
+            color: #287c58;
+        }
+
+        /* CONTENEDOR */
+
+        .contenedor {
+            max-width: 1150px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        /* PORTADA */
+
+        .portada {
+            background-color: #fff6ec;
+            min-height: 360px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 18px #77351d55;
+            gap: 25px;
+        }
+
+        .portada-texto {
+            max-width: 480px;
+            z-index: 1;
+        }
+
+        .portada-texto small {
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .portada h1 {
+            color: #d85d3b;
+            font-size: clamp(38px, 6vw, 65px);
+            margin: 15px 0;
+            line-height: 1.05;
+            text-transform: uppercase;
+        }
+
+        .portada p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .portada-dibujo {
+            width: 52%;
+        }
+
+        .imagen-principal {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px #0003;
+        }
+
+        .decoracion {
+            position: absolute;
+            color: #ed8a32;
+            font-size: 45px;
+        }
+
+        .flor1 {
+            top: 8px;
+            left: 15px;
+        }
+
+        .flor2 {
+            bottom: 10px;
+            right: 20px;
+        }
+
+        /* TITULOS */
+
+        .titulo-seccion {
+            color: #fff5e9;
+            text-align: center;
+            margin: 45px 0 20px;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        /* TARJETAS */
+
+        .fila {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .tarjeta {
+            background-color: #fff5e9;
+            min-height: 230px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 12px #71351c33;
+        }
+
+        .tarjeta-texto {
+            flex: 1;
+        }
+
+        .tarjeta h2 {
+            color: #d45e3c;
+            font-size: 23px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .tarjeta p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .icono {
+            font-size: 65px;
+            min-width: 75px;
+            text-align: center;
+        }
+
+        /* CONTENIDO */
+
+        .contenido {
+            background-color: #fff5e9;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 12px #71351c33;
+        }
+
+        .contenido h2 {
+            color: #d45e3c;
+            font-size: 27px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .contenido p {
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        /* NIVELES */
+
+        .niveles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .nivel {
+            background: #f9e3d0;
+            padding: 22px;
+            border-bottom: 5px solid #df7249;
+            text-align: center;
+        }
+
+        .nivel h3 {
+            color: #b64c32;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .nivel span {
+            font-size: 45px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .nivel p {
+            font-size: 14px;
+        }
+
+        /* ELEMENTOS */
+
+        .elementos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .elemento {
+            background: #fff5e9;
+            padding: 22px 15px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px #71351c22;
+        }
+
+        .elemento span {
+            font-size: 45px;
+        }
+
+        .elemento h3 {
+            color: #cf5839;
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .elemento p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* GALERIA */
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin: 20px 0;
+        }
+
+        .foto {
+            background-color: #fff5e9;
+            padding: 12px;
+            box-shadow: 0 5px 12px #71351c33;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .foto h3 {
+            color: #d45e3c;
+            margin: 12px 0 8px;
+            font-size: 20px;
+        }
+
+        .foto p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* PREPARACION */
+
+        .pasos {
+            background: #fff5e9;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .pasos h2 {
+            color: #d45e3c;
+            margin-bottom: 20px;
+        }
+
+        .pasos ol {
+            padding-left: 25px;
+        }
+
+        .pasos li {
+            margin: 15px 0;
+            line-height: 1.7;
+        }
+
+        /* FRASE FINAL */
+
+        .frase {
+            background-color: #a94330;
+            color: white;
+            text-align: center;
+            padding: 45px 20px;
+            margin-top: 30px;
+        }
+
+        .frase h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .frase p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* BOTON */
+
+        .boton {
+            display: inline-block;
+            background: #287c58;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 18px;
+            font-family: Arial, sans-serif;
+        }
+
+        .boton:hover {
+            background: #19583d;
+        }
+
+        /* PIE DE PAGINA */
+
+        footer {
+            background: #292b27;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #ffc17c;
+        }
+
+        /* DISEÑO RESPONSIVO */
+
+        @media (max-width: 700px) {
+
+            .portada {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .portada-dibujo {
+                width: 100%;
+            }
+
+            .imagen-principal {
+                height: 240px;
+            }
+
+            .fila {
+                grid-template-columns: 1fr;
+            }
+
+            .niveles {
+                grid-template-columns: 1fr;
+            }
+
+            .elementos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+
+            .tarjeta {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav a {
+                font-size: 11px;
+                margin: 5px;
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            .elementos {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <div class="logo">Tradición</div>
+
+        <h2>EL ALTAR MEXICANO</h2>
+
+    </header>
+
+    <!-- MENU -->
+
+    <nav>
+
+        <a href="#inicio">INICIO</a>
+        <a href="#introduccion">INTRODUCCIÓN</a>
+        <a href="#origen">ORIGEN</a>
+        <a href="#niveles">NIVELES</a>
+        <a href="#elementos">ELEMENTOS</a>
+        <a href="#galeria">GALERÍA</a>
+        <a href="#preparacion">PREPARACIÓN</a>
+
+    </nav>
+
+    <main class="contenedor">
+
+        <!-- PORTADA -->
+
+        <section class="portada" id="inicio">
+
+            <span class="decoracion flor1">✿</span>
+            <span class="decoracion flor2">✿</span>
+
+            <div class="portada-texto">
+
+                <small>UNA TRADICIÓN LLENA DE HISTORIA</small>
+
+                <h1>
+                    EL ALTAR<br>
+                    DE DÍA DE<br>
+                    MUERTOS
+                </h1>
+
+                <p>
+                    Un espacio de amor, memoria y tradición,
+                    donde los recuerdos mantienen vivos
+                    los momentos compartidos con quienes
+                    siempre estarán en nuestro corazón.
+                </p>
+
+                <a href="#introduccion" class="boton">
+                    DESCUBRIR LA TRADICIÓN
+                </a>
+
+            </div>
+
+            <div class="portada-dibujo">
+
+                <img
+                class="imagen-principal"
+                src="https://static.wixstatic.com/media/741274_7effc7bc7287439d984d54b9f8ddd7cd~mv2.png/v1/fill/w_980%2Ch_980%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/741274_7effc7bc7287439d984d54b9f8ddd7cd~mv2.png"
+                alt="Altar mexicano de Día de Muertos">
+
+            </div>
+
+        </section>
+
+        <!-- INTRODUCCION -->
+
+        <h2 class="titulo-seccion" id="introduccion">
+            Conoce la ofrenda
+        </h2>
+
+        <section class="fila">
+
+            <article class="tarjeta">
+
+                <div class="tarjeta-texto">
+
+                    <h2>¿Qué es el altar?</h2>
+
+                    <p>
+                        El altar de muertos, también conocido
+                        como ofrenda, es un espacio que las
+                        familias mexicanas preparan para
+                        recordar y honrar a sus seres queridos
+                        fallecidos. Se adorna con fotografías,
+                        flores, veladoras y alimentos.
+                    </p>
+
+                </div>
+
+                <div class="icono">🏵️</div>
+
+            </article>
+
+            <article class="tarjeta">
+
+                <div class="tarjeta-texto">
+
+                    <h2>Su propósito</h2>
+
+                    <p>
+                        Su propósito es recordar a quienes ya
+                        no están físicamente con nosotros,
+                        celebrar sus vidas y mantener presentes
+                        las historias, costumbres y recuerdos
+                        familiares.
+                    </p>
+
+                </div>
+
+                <div class="icono">🕯️</div>
+
+            </article>
+
+        </section>
+
+        <!-- ORIGEN -->
+
+        <section class="contenido" id="origen">
+
+            <h2>Historia y origen del altar</h2>
+
+            <p>
+                El Día de Muertos es una celebración que se ha
+                formado a través de diferentes tradiciones
+                culturales y religiosas. En México, las prácticas
+                de recuerdo a los difuntos se transformaron
+                durante siglos y adquirieron características
+                propias en distintas comunidades.
+            </p>
+
+            <p>
+                Las antiguas culturas mesoamericanas tenían
+                diversas prácticas funerarias y formas de
+                relacionarse con la muerte. Posteriormente,
+                las celebraciones católicas de Todos los Santos
+                y Fieles Difuntos, los días 1 y 2 de noviembre,
+                también influyeron en las costumbres actuales.
+            </p>
+
+            <p>
+                Con el paso del tiempo, las familias incorporaron
+                fotografías, alimentos, velas, flores y objetos
+                personales para formar las ofrendas que
+                conocemos actualmente.
+            </p>
+
+        </section>
+
+        <!-- NIVELES -->
+
+        <h2 class="titulo-seccion" id="niveles">
+            Los niveles del altar
+        </h2>
+
+        <section class="contenido">
+
+            <p>
+                Los altares pueden tener diferentes cantidades
+                de niveles. Los más conocidos son los de dos,
+                tres y siete niveles. Su significado puede cambiar
+                dependiendo de la región y las costumbres familiares.
+            </p>
+
+            <div class="niveles">
+
+                <article class="nivel">
+
+                    <span>🌤️</span>
+
+                    <h3>Dos niveles</h3>
+
+                    <p>
+                        Representan el cielo y la tierra.
+                        Simbolizan la unión entre el mundo
+                        espiritual y el terrenal.
+                    </p>
+
+                </article>
+
+                <article class="nivel">
+
+                    <span>🌎</span>
+
+                    <h3>Tres niveles</h3>
+
+                    <p>
+                        Representan el cielo, la tierra
+                        y el inframundo, de acuerdo con
+                        una interpretación tradicional.
+                    </p>
+
+                </article>
+
+                <article class="nivel">
+
+                    <span>🕯️</span>
+
+                    <h3>Siete niveles</h3>
+
+                    <p>
+                        Se relacionan tradicionalmente
+                        con los pasos que debe atravesar
+                        el alma para llegar a su descanso.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ELEMENTOS -->
+
+        <h2 class="titulo-seccion" id="elementos">
+            Elementos de la ofrenda
+        </h2>
+
+        <section class="elementos">
+
+            <article class="elemento">
+                <span>🌼</span>
+                <h3>Flor de cempasúchil</h3>
+                <p>
+                    Su color y aroma ayudan a señalar
+                    el camino hacia la ofrenda.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🕯️</span>
+                <h3>Veladoras</h3>
+                <p>
+                    Representan la luz que guía
+                    a las ánimas durante su camino.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>💧</span>
+                <h3>Agua</h3>
+                <p>
+                    Se coloca para calmar la sed
+                    de las almas después de su recorrido.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🧂</span>
+                <h3>Sal</h3>
+                <p>
+                    Simboliza la purificación
+                    y protección espiritual.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🍞</span>
+                <h3>Pan de muerto</h3>
+                <p>
+                    Es uno de los alimentos más
+                    representativos de esta celebración.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>💀</span>
+                <h3>Calaveritas</h3>
+                <p>
+                    Representan la muerte y recuerdan
+                    lo pasajera que es la vida.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🎏</span>
+                <h3>Papel picado</h3>
+                <p>
+                    Representa el viento y aporta
+                    color y alegría al altar.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🖼️</span>
+                <h3>Fotografía</h3>
+                <p>
+                    Recuerda a la persona a quien
+                    está dedicada la ofrenda.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🍲</span>
+                <h3>Comida favorita</h3>
+                <p>
+                    Se preparan los platillos que
+                    disfrutaba el ser querido.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🌿</span>
+                <h3>Copal e incienso</h3>
+                <p>
+                    Su aroma se utiliza para
+                    purificar y aromatizar el espacio.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🌺</span>
+                <h3>Arco de flores</h3>
+                <p>
+                    En algunas tradiciones representa
+                    la entrada al mundo de los difuntos.
+                </p>
+            </article>
+
+            <article class="elemento">
+                <span>🧸</span>
+                <h3>Objetos personales</h3>
+                <p>
+                    Se colocan recuerdos y pertenencias
+                    que identificaban al difunto.
+                </p>
+            </article>
+
+        </section>
+
+        <!-- GALERIA DE FOTOGRAFIAS -->
+
+        <h2 class="titulo-seccion" id="galeria">
+            Galería de altares mexicanos
+        </h2>
+
+        <section class="galeria">
+
+            <article class="foto">
+
+                <img
+                src="https://www.digitalmex.mx/media/k2/items/cache/fbafa32db41976b8428299580a25fcbc_XL.jpg?t=20231027_084128"
+                alt="Ofrenda tradicional mexicana">
+
+                <h3>Una ofrenda tradicional</h3>
+
+                <p>
+                    Las flores, veladoras y alimentos
+                    son algunos de los elementos principales
+                    de los altares mexicanos.
+                </p>
+
+            </article>
+
+            <article class="foto">
+
+                <img
+                src="https://images.squarespace-cdn.com/content/v1/59ae0438d7bdcecfe1368741/1635997468121-XG1KN24YDOMWBJMP07AG/image-asset.jpeg?format=1000w"
+                alt="Altar con fotografías y pan de muerto">
+
+                <h3>Recuerdos familiares</h3>
+
+                <p>
+                    Las fotografías representan a las
+                    personas a quienes se dedica la ofrenda.
+                </p>
+
+            </article>
+
+            <article class="foto">
+
+                <img
+                src="https://static.wixstatic.com/media/c4e9c5_b0ddd1aaca9b43818ad89f42d55db393~mv2.jpg/v1/fill/w_980%2Ch_1019%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/c4e9c5_b0ddd1aaca9b43818ad89f42d55db393~mv2.jpg"
+                alt="Ofrenda con calaveritas y alimentos">
+
+                <h3>Colores y sabores</h3>
+
+                <p>
+                    Las frutas, calaveritas y platillos
+                    favoritos hacen especial cada altar.
+                </p>
+
+            </article>
+
+            <article class="foto">
+
+                <img
+                src="https://www.papelpicadodecoramec.com/demo-images/Papel-Picado-Fiestas-Mexicanas.jpg"
+                alt="Decoración mexicana de papel picado">
+
+                <h3>Decoración mexicana</h3>
+
+                <p>
+                    El papel picado y las flores aportan
+                    color y simbolismo a las ofrendas.
+                </p>
+
+            </article>
+
+        </section>
+
+        <!-- PREPARACION -->
+
+        <h2 class="titulo-seccion" id="preparacion">
+            ¿Cómo preparar un altar?
+        </h2>
+
+        <section class="pasos">
+
+            <h2> Paso a paso </h2>
+
+            <ol>
+
+                <li>
+                    <strong>Elegir el espacio:</strong>
+                    Busca un lugar seguro y adecuado
+                    para colocar la ofrenda.
+                </li>
+
+                <li>
+                    <strong>Preparar la base:</strong>
+                    Coloca una mesa o estructura y
+                    decórala con manteles y papel picado.
+                </li>
+
+                <li>
+                    <strong>Organizar los niveles:</strong>
+                    Acomoda los diferentes pisos según
+                    el tipo de altar que quieras realizar.
+                </li>
+
+                <li>
+                    <strong>Colocar las fotografías:</strong>
+                    Elige las imágenes de las personas
+                    a quienes deseas recordar.
+                </li>
+
+                <li>
+                    <strong>Añadir los elementos:</strong>
+                    Incorpora flores, agua, sal, veladoras,
+                    comida y objetos personales.
+                </li>
+
+                <li>
+                    <strong>Decorar:</strong>
+                    Agrega los detalles finales con
+                    flores de cempasúchil y adornos.
+                </li>
+
+            </ol>
+
+        </section>
+
+        <!-- CONCLUSION -->
+
+        <section class="frase">
+
+            <h2>Una tradición que vive en el recuerdo</h2>
+
+            <p>
+                El altar de Día de Muertos es mucho más
+                que una decoración: es una expresión
+                de amor, identidad y memoria.
+
+                Cada fotografía, flor y alimento
+                representa una historia que merece
+                ser recordada.
+            </p>
+
+            <p style="margin-top:20px; font-size:22px;">
+                🌼 Recordar es volver a vivir. 🌼
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- PIE DE PAGINA -->
+
+    <footer>
+
+        <p>EL ALTAR DE DÍA DE MUERTOS</p>
+
+        <p>
+            Una tradición mexicana llena de historia,
+            cultura y recuerdos.
+        </p>
+
+        <p>Proyecto escolar | 2026</p>
+
+        <p>Fuentes de información:</p>
+
+        <p>
+            <a href="https://www.inah.gob.mx/"
+            target="_blank">
+                Instituto Nacional de Antropología e Historia
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.gob.mx/issste/es/articulos/el-altar-de-muertos"
+            target="_blank">
+                ISSSTE - El altar de muertos
+            </a>
+        </p>
+
+        <p>
+            <a href="https://www.gob.mx/profeco"
+            target="_blank">
+                PROFECO
+            </a>
+        </p>
+
+        <p style="margin-top:15px;">
+            © 2026 | Todos los derechos reservados
+        </p>
+
+    </footer>
+
+</body>
+</html>
